@@ -154,11 +154,26 @@ public class SistemaBanco {
 				System.out.println(" Dados Invalidos ");
 			}
 
-			
 		}
 
 		if (i == 3) {
-			System.out.println("\nSua conta está bloqueada procure pelo Administrador");
+			System.out.println("Sua conta está bloqueada procure pelo Administrador\n");
+			int option;
+			String mensagem ;
+
+				System.out.println("Deseja entrar em contato com o Administrador: 1 - Sim | 2 - Não ");
+
+				option = ler.nextInt();
+				
+				if(option == 1 ) {
+					System.out.println("Ligue para Fernando: 11986608101\n"  );
+					System.out.println("Mande e-mail para: banco@jobru.com" );
+				}
+				
+				else if (option == 2 ) {
+					System.out.println("Quando possível va até a agência...");
+				}
+
 		}
 
 		// System.out.println(contaDoBruno.agencia);
