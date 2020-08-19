@@ -40,113 +40,125 @@ public class SistemaBanco {
 		contaDaViviam.setSenha(1257);
 		contaDaViviam.setTitular(viviam);
 
-		//for (int i = 0 ; i < 3 ; i++) {
+		int i = 0;
+		for (i = 0; i < 3; i++) {
+
+			int opcao;
+			int senhaEntrar, agenciaEntrar, contaEntrar;
+
+			System.out.println("\nTentativa " + (i + 1) + "/3\n");
+
+			System.out.println("Digite sua Agência: ");
+			agenciaEntrar = ler.nextInt();
+
+			System.out.println("\nDigite sua Conta: ");
+			contaEntrar = ler.nextInt();
+
+			System.out.println("\nDigite sua senha: ");
+			senhaEntrar = ler.nextInt();
+
+			if ((contaDoBruno.getSenha() == senhaEntrar && contaDoBruno.getAgencia() == agenciaEntrar
+					&& contaDoBruno.getConta() == contaEntrar)
+					|| (contaDaViviam.getSenha() == senhaEntrar && contaDaViviam.getAgencia() == agenciaEntrar
+							&& contaDaViviam.getConta() == contaEntrar)) {
+
+				do {
+					System.out.println(
+							"\nDigite\n 1 - Para deposito \n 2 - Para Sacar \n 3 - Para Transfeir\n 4 - Verificar meus dados\n 5 - Sair Do Sistema ");
+					opcao = ler.nextInt();
+					switch (opcao) {
+
+					case 1:
+						if (contaEntrar == 495256) {
+							System.out.println("Saldo Disponivel: " + contaDaViviam.getSaldo());
+							System.out.println("Digite o valor que deseja depositar: ");
+							double deposito = ler.nextDouble();
+							contaDaViviam.depositar(deposito);
+							System.out.println("Saldo Atual: " + contaDaViviam.getSaldo());
+							System.out.println("\n\n");
+						} else {
+							System.out.println("Saldo Disponivel: " + contaDoBruno.getSaldo());
+							System.out.println("Digite o valor que deseja depositar: ");
+							double deposito = ler.nextDouble();
+							contaDoBruno.depositar(deposito);
+							System.out.println("Saldo Atual: " + contaDoBruno.getSaldo());
+							System.out.println("\n\n");
+						}
+						break;
+
+					case 2:
+						if (contaEntrar == 495256) {
+							System.out.println("Saldo Disponivel: " + contaDaViviam.getSaldo());
+							System.out.println("Digite o valor que deseja sacar: ");
+							double sacar = ler.nextDouble();
+							contaDaViviam.sacar(sacar);
+							System.out.println("Saldo Atual: " + contaDaViviam.getSaldo());
+							System.out.println("\n\n");
+						} else {
+							System.out.println("Saldo Disponivel: " + contaDoBruno.getSaldo());
+							System.out.println("Digite o valor que deseja sacar: ");
+							double sacar = ler.nextDouble();
+							contaDoBruno.sacar(sacar);
+							System.out.println("Saldo Atual: " + contaDoBruno.getSaldo());
+							System.out.println("\n\n");
+						}
+
+						break;
+
+					case 3:
+						if (contaEntrar == 495256) {
+							System.out.println("Saldo Disponivel: " + contaDaViviam.getSaldo());
+							System.out.println(" Digite o valor que deseja Transferir: ");
+							double transfere = ler.nextDouble();
+							contaDaViviam.transferir(transfere, contaDoBruno);
+							System.out.println("Saldo Atual: " + contaDaViviam.getSaldo());
+							System.out.println("\n\n");
+						} else {
+							System.out.println("Saldo Disponivel: " + contaDoBruno.getSaldo());
+							System.out.println(" Digite o valor que deseja Transferir: ");
+							double transfere = ler.nextDouble();
+							contaDoBruno.transferir(transfere, contaDaViviam);
+							System.out.println("Saldo Atual: " + contaDoBruno.getSaldo());
+							System.out.println("\n\n");
+						}
+						break;
+
+					case 4:
+						if (contaEntrar == 495256) {
+							System.out.println("Dados Pessoais: ");
+							viviam.imprimirCliente();
+							System.out.println("Dados Bancarios: ");
+							contaDaViviam.imprimirDadosBancarios();
+							System.out.println("\n\n");
+						} else {
+							System.out.println("Dados Pessoais: ");
+							bruno.imprimirCliente();
+							System.out.println("Dados Bancarios: ");
+							contaDoBruno.imprimirDadosBancarios();
+							System.out.println("\n\n");
+						}
+						break;
+
+					case 5:
+						System.out.println("Saindo do sistema...");
+						break;
+
+					default:
+						System.out.println(" Digite uma opção valida");
+						break;
+
+					}
+					i = 4;
+				} while (opcao != 5);
+			} else {
+				System.out.println(" Dados Invalidos ");
+			}
+
 			
-		
-		int opcao;
-		int senhaEntrar, agenciaEntrar, contaEntrar;
-		System.out.println("Digite sua Agência: ");
-		agenciaEntrar = ler.nextInt();
-		System.out.println(" Digite sua Conta: ");
-		contaEntrar = ler.nextInt();
-		System.out.println("Digite sua senha: ");
-		senhaEntrar = ler.nextInt();
+		}
 
-		
-		if ( (contaDoBruno.getSenha() == senhaEntrar && contaDoBruno.getAgencia() == agenciaEntrar
-				&& contaDoBruno.getConta() == contaEntrar)
-				|| (contaDaViviam.getSenha() == senhaEntrar && contaDaViviam.getAgencia() == agenciaEntrar
-						&& contaDaViviam.getConta() == contaEntrar)) {
-			
-			do {
-				System.out.println(
-						"Digite\n 1 - Para deposito \n 2 - Para Sacar \n 3 - Para Transfeir\n 4 - Verificar meus dados\n 5 - Sair Do Sistema ");
-				opcao = ler.nextInt();
-				switch (opcao) {
-
-				case 1:
-					if (contaEntrar == 495256) {
-						System.out.println("Saldo Disponivel: " + contaDaViviam.getSaldo());
-						System.out.println("Digite o valor que deseja depositar: ");
-						double deposito = ler.nextDouble();
-						contaDaViviam.depositar(deposito);
-						System.out.println("Saldo Atual: " + contaDaViviam.getSaldo());
-						System.out.println("\n\n");
-					} else {
-						System.out.println("Saldo Disponivel: " + contaDoBruno.getSaldo());
-						System.out.println("Digite o valor que deseja depositar: ");
-						double deposito = ler.nextDouble();
-						contaDoBruno.depositar(deposito);
-						System.out.println("Saldo Atual: " + contaDoBruno.getSaldo());
-						System.out.println("\n\n");
-					}
-					break;
-
-				case 2:
-					if (contaEntrar == 495256) {
-						System.out.println("Saldo Disponivel: " + contaDaViviam.getSaldo());
-						System.out.println("Digite o valor que deseja sacar: ");
-						double sacar = ler.nextDouble();
-						contaDaViviam.sacar(sacar);
-						System.out.println("Saldo Atual: " + contaDaViviam.getSaldo());
-						System.out.println("\n\n");
-					} else {
-						System.out.println("Saldo Disponivel: " + contaDoBruno.getSaldo());
-						System.out.println("Digite o valor que deseja sacar: ");
-						double sacar = ler.nextDouble();
-						contaDoBruno.sacar(sacar);
-						System.out.println("Saldo Atual: " + contaDoBruno.getSaldo());
-						System.out.println("\n\n");
-					}
-
-					break;
-
-				case 3:
-					if (contaEntrar == 495256) {
-						System.out.println("Saldo Disponivel: " + contaDaViviam.getSaldo());
-						System.out.println(" Digite o valor que deseja Transferir: ");
-						double transfere = ler.nextDouble();
-						contaDaViviam.transferir(transfere, contaDoBruno);
-						System.out.println("Saldo Atual: " + contaDaViviam.getSaldo());
-						System.out.println("\n\n");
-					} else {
-						System.out.println("Saldo Disponivel: " + contaDoBruno.getSaldo());
-						System.out.println(" Digite o valor que deseja Transferir: ");
-						double transfere = ler.nextDouble();
-						contaDoBruno.transferir(transfere, contaDaViviam);
-						System.out.println("Saldo Atual: " + contaDoBruno.getSaldo());
-						System.out.println("\n\n");
-					}
-					break;
-
-				case 4:
-					if (contaEntrar == 495256) {
-						System.out.println("Dados Pessoais: ");
-						viviam.imprimirCliente();
-						System.out.println("Dados Bancarios: ");
-						contaDaViviam.imprimirDadosBancarios();
-						System.out.println("\n\n");
-					} else {
-						System.out.println("Dados Pessoais: ");
-						bruno.imprimirCliente();
-						System.out.println("Dados Bancarios: ");
-						contaDoBruno.imprimirDadosBancarios();
-						System.out.println("\n\n");
-					}
-					break;
-
-				case 5:
-					System.out.println("Saindo do sistema...");
-					break;
-
-				default:
-					System.out.println(" Digite uma opção valida");
-					break;
-
-				}
-			} while (opcao != 5);
-		} else {
-			System.out.println(" Dados Invalidos ");
+		if (i == 3) {
+			System.out.println("\nSua conta está bloqueada procure pelo Administrador");
 		}
 
 		// System.out.println(contaDoBruno.agencia);
